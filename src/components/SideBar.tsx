@@ -1,15 +1,11 @@
 import { Button } from '../components/Button';
+import { useMovies } from '../hooks/useMovies';
 
 import '../styles/sidebar.scss';
 
-import { GenreResponseProps } from '../types/index';
-interface SideBarProps {
-  genres: GenreResponseProps[];
-  selectedGenreId: number;
-  handleClickButton: (id: number) => void;
-}
+export function SideBar() {
 
-export function SideBar({ genres, selectedGenreId, handleClickButton }: SideBarProps) {
+  const { genres, handleChoiceOfGender, selectedGenreId } = useMovies();
 
   return (
     <nav className="sidebar">
@@ -21,7 +17,7 @@ export function SideBar({ genres, selectedGenreId, handleClickButton }: SideBarP
             id={String(genre.id)}
             title={genre.title}
             iconName={genre.name}
-            onClick={() => handleClickButton(genre.id)}
+            onClick={() => handleChoiceOfGender(genre.id)}
             selected={selectedGenreId === genre.id}
           />
         ))}

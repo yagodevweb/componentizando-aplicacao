@@ -1,15 +1,11 @@
 import { MovieCard } from '../components/MovieCard';
-
-import { GenreResponseProps, MovieProps } from '../types/index';
+import { useMovies } from '../hooks/useMovies';
 
 import '../styles/content.scss';
 
-interface ContentProps {
-  movies: MovieProps[];
-  selectedGenre: GenreResponseProps;
-}
+export function Content() {
 
-export function Content({ movies, selectedGenre }: ContentProps) {
+  const { selectedGenre, movies } = useMovies();
 
   return (
     <div className="container">
